@@ -35,10 +35,10 @@ public class RedisConfig {
     @Scope("singleton")
     public RedisTemplate<String, String> redisTemplate() {
 
-        System.out.println("host is " + redisHost);
-        System.out.println("port is " + redisPort.get());
-        System.out.println("redis username is " + redisUsername);
-        System.out.println("redis password is " + redisPassword);
+        // System.out.println("host is " + redisHost);
+        // System.out.println("port is " + redisPort.get());
+        // System.out.println("redis username is " + redisUsername);
+        // System.out.println("redis password is " + redisPassword);
         final RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
 
         config.setHostName(redisHost);
