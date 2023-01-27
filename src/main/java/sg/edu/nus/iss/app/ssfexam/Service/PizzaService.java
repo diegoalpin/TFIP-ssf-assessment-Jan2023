@@ -19,9 +19,10 @@ public class PizzaService {
         redisTemplate.opsForValue().set(order.getId(), order.toJSON().toString());
     }
 
-    public Order getOrder(String orderId) throws IOException {
+    public String getOrder(String orderId) throws IOException {
         String orderString = redisTemplate.opsForValue().get(orderId);
         Order orderObject = Order.create(orderString);
-        return orderObject;
+        // System.out.println(orderObject.toJSON().toString());
+        return orderString;
     }
 }

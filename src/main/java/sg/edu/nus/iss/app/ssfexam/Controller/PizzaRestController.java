@@ -27,8 +27,8 @@ public class PizzaRestController {
         // } catch (Exception e) {
         // System.out.println(e.getMessage());
         // }
-        Order order = pizzaService.getOrder(orderId);
-        System.out.println(order.toString());
+        String order = pizzaService.getOrder(orderId);
+        // System.out.println(order.toString());
         if (order == null) {
 
             JsonObject jsonObject = Json.createObjectBuilder()
@@ -41,6 +41,6 @@ public class PizzaRestController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(order.toJSON().toString());
+                .body(order);
     }
 }
