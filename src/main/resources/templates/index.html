@@ -12,12 +12,7 @@
       <h2>Panucci's Pizza</h2>
     </div>
 
-    <form
-      data-th-action="@{/pizza}"
-      data-th-object="${order}"
-      method="post"
-      novalidate
-    >
+    <form data-th-action="@{/pizza}" data-th-object="${order}" method="post">
       <div>
         <h2>Select a pizza</h2>
         <table>
@@ -32,6 +27,7 @@
                   data-th-field="*{type}"
                   name="pizza"
                   value="bella"
+                  checked
                 />
                 Bella
               </div>
@@ -126,6 +122,7 @@
                 type="number"
                 data-th-field="*{quantity}"
                 name="quantity"
+                value="3"
               />
               <span
                 class="error"

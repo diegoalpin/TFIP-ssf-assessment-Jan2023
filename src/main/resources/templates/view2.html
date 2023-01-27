@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View 2</title>
+  </head>
+  <body data-th-object="${order}">
+    <h1 style="text-align: left">Delivery Details</h1>
+    <h3>
+      <span>Order Number: </span>
+      <a th:href="@{/order/{id}(id=${order.id})}"
+        ><span data-th-text="*{id}"></span
+      ></a>
+    </h3>
+    <h3>
+      <span>Your order will be delivered to: </span>
+      <span data-th-text="*{delivery.address}"></span>
+    </h3>
+    <h3>
+      <span>Pizza Cost: </span> <span data-th-text="${costNoRush}"></span>
+    </h3>
+    <h3 data-th-if="${rushCost > 1 }">
+      <span>Rush: </span> <span data-th-text="${rushCost}"></span>
+    </h3>
+    <h3><span>Total cost: </span> <span data-th-text="*{cost}"></span></h3>
+    <form></form>
+  </body>
+</html>

@@ -5,8 +5,102 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>View 1</title>
+    <link rel="stylesheet" th:href="@{styles.css}" />
   </head>
   <body>
-    <h1>This is view 1</h1>
+    <h1 style="text-align: center">Order Delivery Details</h1>
+    <form
+      data-th-action="@{/pizza/order}"
+      data-th-object="${order}"
+      method="post"
+      novalidate
+    >
+      <input type="hidden" data-th-field="${order.type}" />
+      <input type="hidden" data-th-field="${order.size}" />
+      <input type="hidden" data-th-field="${order.quantity}" />
+      <table>
+        <tr>
+          <td><span>Name:</span></td>
+          <td>
+            <input
+              type="text"
+              data-th-field="${order.delivery.name}"
+              placeholder="name"
+              required
+              minlength="3"
+            />
+          </td>
+          <td>
+            <span
+              class="error"
+              data-th-if="${#fields.hasErrors('delivery.name')}"
+              data-th-errors="${order.delivery.name}"
+            ></span>
+          </td>
+        </tr>
+        <tr>
+          <td><span>Address: </span></td>
+          <td>
+            <input
+              type="text"
+              data-th-field="${order.delivery.address}"
+              placeholder="address"
+              required
+            />
+          </td>
+          <td>
+            <!-- <span
+              class="error"
+              data-th-if="${#fields.hasErrors('address')}"
+              data-th-errors="${order.delivery.address}"
+            ></span> -->
+          </td>
+        </tr>
+        <tr>
+          <td><span>Phone:</span></td>
+          <td>
+            <input
+              type="text"
+              data-th-field="${order.delivery.phone}"
+              placeholder="phone"
+              required
+              minlength="8"
+              maxlength="8"
+            />
+          </td>
+          <td>
+            <!-- <span
+              class="error"
+              data-th-if="${#fields.hasErrors('phone')}"
+              data-th-errors="${order.delivery.phone}"
+            ></span> -->
+          </td>
+        </tr>
+        <tr>
+          <td><span>Rush:</span></td>
+          <td>
+            <input type="checkbox" data-th-field="${order.delivery.isRush}" />
+          </td>
+        </tr>
+        <tr>
+          <td><span>Comments:</span></td>
+          <td>
+            <input
+              type="text"
+              data-th-field="${order.delivery.comments}"
+              placeholder="Type here"
+              width="30px"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <button type="reset" value="Cancel Order">Cancel Order</button>
+            <button type="submit" value="Place Order">Place Order</button>
+          </td>
+        </tr>
+      </table>
+    </form>
   </body>
 </html>
